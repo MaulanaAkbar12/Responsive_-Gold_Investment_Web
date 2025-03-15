@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buy Page - Gold Investment</title>
+    <link rel="stylesheet" href="css/beli.css" />
+  </head>
+
+  <body>
+    <div class="gold-purchase-page">
+      <h2 class="purchase-title">Beli Tabungan Emas</h2>
+      <p class="step-indicator">Langkah 1 dari 3 - Pembelian</p>
+
+      <div class="purchase-details">
+        <h3 class="section-title">Detail Pembelian</h3>
+
+        <div class="receiver-account">
+          <label for="receiver">Rekening Penerima</label>
+          <select id="receiver" class="input-field">
+            <option value="">Pilih rekening penerima</option>
+            <option value="A">Rekening A</option>
+            <option value="B">Rekening B</option>
+          </select>
+        </div>
+
+        <div class="gold-price">
+          <p>Harga Emas</p>
+          <p class="price">Rp 1,461,000/gram</p>
+        </div>
+
+        <div class="purchase-amount">
+          <label for="purchaseRupiahAmount">Jumlah Pembelian</label>
+          <div class="amount-options">
+            <input
+              type="number"
+              id="purchaseRupiahAmount"
+              class="input-field"
+              placeholder="Rupiah"
+              onkeyup="updatePurchaseGramAmount()"
+            />
+            <input
+              type="number"
+              id="purchaseGramAmount"
+              class="input-field"
+              placeholder="Gram"
+              onkeyup="updatePurchaseRupiahAmount()"
+            />
+          </div>
+        </div>
+
+        <div class="terms">
+          <label>
+            <input type="checkbox" id="termsCheckbox" />
+            Saya setuju dengan <a href="#">Syarat dan Ketentuan</a> yang berlaku
+          </label>
+        </div>
+
+        <button class="btn next-btn" onclick="nextStep()">Selanjutnya</button>
+      </div>
+    </div>
+
+    <script>
+      const conversionRate = 1461000; // 1 gram = Rp 1,461,000
+
+      function updatePurchaseGramAmount() {
+        const rupiahInput = document.getElementById("purchaseRupiahAmount");
+        const gramInput = document.getElementById("purchaseGramAmount");
+
+        const rupiahValue = parseFloat(rupiahInput.value) || 0;
+        const gramValue = rupiahValue / conversionRate;
+
+        gramInput.value = gramValue.toFixed(2);
+      }
+
+      function updatePurchaseRupiahAmount() {
+        const rupiahInput = document.getElementById("purchaseRupiahAmount");
+        const gramInput = document.getElementById("purchaseGramAmount");
+
+        const gramValue = parseFloat(gramInput.value) || 0;
+        const rupiahAmount = gramValue * conversionRate;
+
+        rupiahInput.value = rupiahAmount.toFixed(2);
+      }
+
+      function nextStep() {
+        const receiver = document.getElementById("receiver").value;
+        const rupiahAmount = document.getElementById(
+          "purchaseRupiahAmount"
+        ).value;
+        const gramAmount = document.getElementById("purchaseGramAmount").value;
+        const termsChecked = document.getElementById("termsCheckbox").checked;
+
+        if (!receiver || !rupiahAmount || !gramAmount || !termsChecked) {
+          alert("Mohon lengkapi semua data dan setujui syarat & ketentuan.");
+          return;
+        }
+
+        const beliData = {
+          sender: receiver,
+          rupiahAmount: parseFloat(rupiahAmount),
+          gramAmount: parseFloat(gramAmount),
+        };
+
+        localStorage.setItem("beliData", JSON.stringify(beliData));
+        window.location.href = "ConfirmBeli.html";
+      }
+    </script>
+  </body>
+</html>

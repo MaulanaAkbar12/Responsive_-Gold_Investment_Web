@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Konfirmasi Tabungan Emas</title>
+    <link rel="stylesheet" href="css/ConfirmBeli.css" />
+  </head>
+
+  <body onload="loadBeliData()">
+    <div class="gold-purchase-page">
+      <h1 class="purchase-title">Beli Tabungan Emas</h1>
+      <p class="step-indicator">Langkah 2 dari 3 - Konfirmasi</p>
+
+      <div class="purchase-details">
+        <div class="section-title">Detail Transaksi</div>
+
+        <div class="purchase-option">
+          <label>Nama Pemilik:</label>
+          <p id="ownerName">-</p>
+        </div>
+        <div class="purchase-option">
+          <label>Rekening Emas:</label>
+          <p id="rekeningEmas">-</p>
+        </div>
+        <div class="purchase-option">
+          <label>Nominal Emas:</label>
+          <p id="nominalEmas">- gram</p>
+        </div>
+
+        <div class="section-title">Detail Harga</div>
+
+        <div class="purchase-option">
+          <label>Total Pembelian:</label>
+          <p id="totalPembelian">Rp -</p>
+        </div>
+        <div class="purchase-option">
+          <label>Biaya Administrasi:</label>
+          <p>Gratis</p>
+        </div>
+        <div class="purchase-option">
+          <label>Total Harga:</label>
+          <p><strong id="totalHarga">Rp -</strong></p>
+        </div>
+
+        <button class="btn next-btn" onclick="confirmBeli()">
+          Konfirmasi Pembelian
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function loadBeliData() {
+        // Ambil data dari localStorage yang disimpan sebelumnya
+        const beliData = JSON.parse(localStorage.getItem("beliData"));
+
+        if (!beliData) {
+          alert(
+            "Data pembelian tidak ditemukan, silakan kembali ke halaman sebelumnya."
+          );
+          window.location.href = "Beli.html";
+          return;
+        }
+
+        // Menampilkan data pada halaman konfirmasi
+        document.getElementById("ownerName").textContent = "User Example"; // Bisa diganti dari database
+        document.getElementById("rekeningEmas").textContent = beliData.sender;
+        document.getElementById("nominalEmas").textContent =
+          (beliData.rupiahAmount / 1461000).toFixed(2) + " gram";
+        document.getElementById("totalPembelian").textContent =
+          "Rp " + beliData.rupiahAmount;
+        document.getElementById("totalHarga").textContent =
+          "Rp " + beliData.rupiahAmount;
+      }
+
+      function confirmBeli() {
+        alert("Pembelian berhasil dikonfirmasi!");
+        localStorage.removeItem("beliData"); // Hapus data setelah transaksi selesai
+        window.location.href = "Success.html"; // Bisa diarahkan ke halaman sukses
+      }
+    </script>
+  </body>
+</html>

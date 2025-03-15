@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Konfirmasi Jual Tabungan Emas</title>
+    <link rel="stylesheet" href="css/ConfirmJual.css" />
+  </head>
+
+  <body onload="loadJualData()">
+    <div class="gold-selling-page">
+      <h1 class="selling-title">Jual Tabungan Emas</h1>
+      <p class="step-indicator">Langkah 2 dari 3 - Konfirmasi</p>
+
+      <div class="selling-details">
+        <!-- Detail Penjualan -->
+        <div class="section-title">Detail Penjualan</div>
+
+        <div class="selling-option">
+          <label>Nama Pemilik:</label>
+          <p id="ownerName">-</p>
+        </div>
+        <div class="selling-option">
+          <label>Rekening Emas:</label>
+          <p id="rekeningEmas">-</p>
+        </div>
+        <div class="selling-option">
+          <label>Nominal Emas:</label>
+          <p id="nominalEmas">- gram</p>
+        </div>
+
+        <!-- Detail Penerima -->
+        <div class="section-title">Detail Penerima</div>
+        <div class="receiver-option">
+          <div class="bank-logo">
+            <img src="download.jpeg" alt="Logo Bank" />
+          </div>
+          <div class="receiver-details">
+            <label id="receiverBank">-</label>
+            <p id="receiverName">-</p>
+            <p id="receiverAccount">-</p>
+          </div>
+        </div>
+
+        <!-- Detail Harga -->
+        <div class="section-title">Detail Harga</div>
+
+        <div class="selling-option">
+          <label>Total Penjualan:</label>
+          <p id="totalPenjualan">Rp -</p>
+        </div>
+        <div class="selling-option">
+          <label>Biaya Administrasi:</label>
+          <p>Gratis</p>
+        </div>
+        <div class="selling-option">
+          <label>Total Harga:</label>
+          <p><strong id="totalHarga">Rp -</strong></p>
+        </div>
+
+        <button class="btn next-btn" onclick="confirmJual()">
+          Konfirmasi Pembelian
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function loadJualData() {
+        // Ambil data dari localStorage yang disimpan sebelumnya
+        const jualData = JSON.parse(localStorage.getItem("jualData"));
+
+        if (!jualData) {
+          alert(
+            "Data penjualan tidak ditemukan, silakan kembali ke halaman sebelumnya."
+          );
+          window.location.href = "Jual.html";
+          return;
+        }
+
+        // Menampilkan data pada halaman konfirmasi
+        document.getElementById("ownerName").textContent = "User Example"; // Bisa diganti dari database
+        document.getElementById("rekeningEmas").textContent = jualData.sender;
+        document.getElementById("nominalEmas").textContent =
+          (jualData.rupiahAmount / 1461000).toFixed(2) + " gram";
+        document.getElementById("receiverBank").textContent = "Bank XYZ"; // Bisa disesuaikan
+        document.getElementById("receiverName").textContent = "Nama Penerima"; // Bisa disesuaikan
+        document.getElementById("receiverAccount").textContent =
+          jualData.receiver;
+        document.getElementById("totalPenjualan").textContent =
+          "Rp " + jualData.rupiahAmount;
+        document.getElementById("totalHarga").textContent =
+          "Rp " + jualData.rupiahAmount;
+      }
+
+      function confirmJual() {
+        alert("Penjualan berhasil dikonfirmasi!");
+        localStorage.removeItem("jualData"); // Hapus data setelah transaksi selesai
+        window.location.href = "Success.html"; // Bisa diarahkan ke halaman sukses
+      }
+    </script>
+  </body>
+</html>
