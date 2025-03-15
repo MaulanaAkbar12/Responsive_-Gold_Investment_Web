@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jual Tabungan Emas</title>
+    <link rel="stylesheet" href="css/jual.css" />
+  </head>
+
+  <body>
+    <div class="gold-selling-page">
+      <h2 class="selling-title">Jual Tabungan Emas</h2>
+      <p class="step-indicator">Langkah 1 dari 3 - Penjualan</p>
+
+      <div class="selling-details">
+        <h3 class="section-title">Detail Penjualan</h3>
+
+        <!-- Rekening Pengirim -->
+        <div class="sender-account">
+          <label for="sender">Rekening Pengirim</label>
+          <select id="sender" class="input-field">
+            <option value="">Pilih rekening pengirim</option>
+            <option value="1">Rekening 1</option>
+            <option value="2">Rekening 2</option>
+            <option value="3">Rekening 3</option>
+          </select>
+        </div>
+
+        <!-- Harga Emas  -->
+        <div class="gold-price">
+          <p>Harga Emas</p>
+          <p class="price">Rp 1,461,000/gram</p>
+        </div>
+
+        <!-- Jumlah Penjualan -->
+        <div class="selling-amount">
+          <label for="rupiahAmount">Jumlah Penjualan</label>
+          <div class="amount-options">
+            <input
+              type="text"
+              id="rupiahAmount"
+              class="input-field"
+              placeholder="Rupiah"
+              onkeyup="updateGramAmount()"
+            />
+            <input
+              type="text"
+              id="gramAmount"
+              class="input-field"
+              placeholder="Gram"
+              onkeyup="updateRupiahAmount()"
+            />
+          </div>
+        </div>
+
+        <!-- Rekening Penerima -->
+        <div class="receiver-account">
+          <label for="receiver">Rekening Penerima</label>
+          <select id="receiver" class="input-field">
+            <option value="">Pilih rekening penerima</option>
+            <option value="A">Rekening A</option>
+            <option value="B">Rekening B</option>
+          </select>
+        </div>
+
+        <!-- Syarat dan Ketentuan -->
+        <div class="terms">
+          <input type="checkbox" id="terms" />
+          <label for="terms"
+            >Saya setuju dengan <a href="#">Syarat dan Ketentuan</a> yang
+            berlaku</label
+          >
+        </div>
+
+        <!-- Tombol Selanjutnya -->
+        <button class="btn next-btn" onclick="submitJual()">Selanjutnya</button>
+      </div>
+    </div>
+
+    <script>
+      function updateGramAmount() {
+        const rupiahInput = document.getElementById("rupiahAmount");
+        const gramInput = document.getElementById("gramAmount");
+
+        // Set the conversion rate from Rupiah to Gram
+        const conversionRate = 1461000;
+
+        // Parse the input value from Rupiah
+        const rupiahValue =
+          parseFloat(rupiahInput.value.replace(/,/g, "")) || 0;
+
+        // Calculate the equivalent grams
+        const gramValue = rupiahValue / conversionRate;
+
+        // Update the gramAmount field with the calculated value (formatted to 2 decimals)
+        gramInput.value = gramValue.toFixed(2);
+      }
+
+      function updateRupiahAmount() {
+        const rupiahInput = document.getElementById("rupiahAmount");
+        const gramInput = document.getElementById("gramAmount");
+
+        // Set the conversion rate from Rupiah to Gram
+        const conversionRate = 1461000;
+
+        // Parse the input value from Gram
+        const gramValue = parseFloat(gramInput.value.replace(/,/g, "")) || 0;
+
+        // Calculate the equivalent rupiah
+        const rupiahValue = gramValue * conversionRate;
+
+        // Update the rupiahAmount field with the calculated value (formatted to 2 decimals)
+        rupiahInput.value = rupiahValue.toFixed(2);
+      }
+
+      function submitJual() {
+        const sender = document.getElementById("sender").value;
+        const receiver = document.getElementById("receiver").value;
+        const rupiahAmount = document.getElementById("rupiahAmount").value;
+        const gramAmount = document.getElementById("gramAmount").value;
+        const termsAccepted = document.getElementById("terms").checked;
+
+        if (
+          !sender ||
+          !receiver ||
+          !rupiahAmount ||
+          !gramAmount ||
+          !termsAccepted
+        ) {
+          alert("Harap isi semua data dan setujui syarat dan ketentuan.");
+          return;
+        }
+
+        // Simulasi pengiriman data (bisa diganti dengan AJAX ke backend)
+        const jualData = {
+          sender,
+          receiver,
+          rupiahAmount,
+          gramAmount,
+        };
+
+        localStorage.setItem("jualData", JSON.stringify(jualData));
+        alert("Data berhasil disimpan!");
+
+        // Redirect ke halaman konfirmasi (simulasi)
+        window.location.href = "JualConfirm.html";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Sign Up</title>
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <h2>Start your gold investment</h2>
+        <h3>Login to gold investment</h3>
+
+        <!-- Standard HTML form for login -->
+        <form id="loginForm">
+          <div class="input-box">
+            <label for="email">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="example@gmail.com"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="********"
+              required
+            />
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn">Sign in</button>
+
+          <div class="social-login">
+            <p>or sign in with</p>
+            <div class="social-icons">
+              <button type="button">
+                <img src="images/Facebook.jpeg" alt="Facebook" />
+              </button>
+              <button type="button">
+                <img src="images/Google.jpeg" alt="Google" />
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <p class="sign-in-text">
+          Don't have an account?
+          <a href="signup.html">Sign up</a>
+        </p>
+      </div>
+
+      <div class="image-container">
+        <img src="images/Consultores_Financeiros.jpeg" alt="Background Image" />
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Mencegah reload halaman
+
+          // Ambil data dari form
+          let email = document.getElementById("email").value;
+          let password = document.getElementById("password").value;
+
+          // Simulasi autentikasi (menggunakan localStorage)
+          let storedUser = localStorage.getItem("user");
+          if (storedUser) {
+            let userData = JSON.parse(storedUser);
+            if (userData.email === email && userData.password === password) {
+              alert("Login successful!");
+              window.location.href = "user.html"; // Redirect ke halaman utama
+            } else {
+              alert("Invalid email or password!");
+            }
+          } else {
+            alert("No user found, please sign up first.");
+          }
+        });
+    </script>
+  </body>
+</html>

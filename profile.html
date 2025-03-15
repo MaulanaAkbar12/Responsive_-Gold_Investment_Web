@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile - Gold Investment</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+    <link rel="stylesheet" href="css/profile.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="user-header">
+      <div class="user-info">
+        <img src="images/Woman.jpeg" alt="User Profile" class="user-img" />
+        <div class="user-details">
+          <h2 id="user-name">User Name</h2>
+          <p id="user-rekening">Rekening: 123456789</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Profile Overview -->
+    <section class="profile-overview">
+      <h3>Your Profile</h3>
+      <form id="user-profile-form" class="profile-form">
+        <div class="input-box">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" disabled />
+        </div>
+        <div class="input-box">
+          <label for="nik">NIK</label>
+          <input type="text" id="nik" disabled />
+        </div>
+        <div class="input-box">
+          <label for="address">Address</label>
+          <input type="text" id="address" disabled />
+        </div>
+        <div class="input-box">
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" disabled />
+        </div>
+        <div class="input-box">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" disabled />
+        </div>
+        <div class="input-box">
+          <label for="username">Username</label>
+          <input type="text" id="username" disabled />
+        </div>
+        <div class="input-box">
+          <label for="password">Password</label>
+          <div class="password-container">
+            <input type="password" id="password" disabled />
+          </div>
+        </div>
+
+        <button type="button" id="edit-button" class="btn">Edit</button>
+        <button
+          type="submit"
+          id="save-button"
+          class="btn"
+          style="display: none"
+        >
+          Save
+        </button>
+      </form>
+    </section>
+
+    <!-- Footer Navigation -->
+    <footer class="footer-nav">
+      <div class="footer-btn">
+        <a href="user.html" class="footer-link">Home</a>
+      </div>
+      <div class="footer-btn">
+        <a href="logout.html" class="footer-link">Log Out</a>
+      </div>
+      <div class="footer-btn">
+        <a href="profile.html" class="footer-link">Profile</a>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Simulasi data user dari localStorage
+        let userData = JSON.parse(localStorage.getItem("user")) || {
+          name: "John Doe",
+          rekening: "123456789",
+          nik: "987654321",
+          address: "123 Street, City",
+          phone: "08123456789",
+          dob: "1990-01-01",
+          username: "johndoe",
+          password: "password123",
+        };
+
+        // Mengisi data user ke dalam input fields
+        document.getElementById("user-name").innerText = userData.name;
+        document.getElementById("user-rekening").innerText =
+          "Rekening: " + userData.rekening;
+        document.getElementById("full-name").value = userData.name;
+        document.getElementById("nik").value = userData.nik;
+        document.getElementById("address").value = userData.address;
+        document.getElementById("phone").value = userData.phone;
+        document.getElementById("dob").value = userData.dob;
+        document.getElementById("username").value = userData.username;
+        document.getElementById("password").value = userData.password;
+
+        // Fungsi untuk toggle edit mode
+        document
+          .getElementById("edit-button")
+          .addEventListener("click", function () {
+            let inputs = document.querySelectorAll("#user-profile-form input");
+            inputs.forEach((input) => input.removeAttribute("disabled"));
+            document.getElementById("edit-button").style.display = "none";
+            document.getElementById("save-button").style.display =
+              "inline-block";
+          });
+
+        // Fungsi untuk menyimpan perubahan
+        document
+          .getElementById("user-profile-form")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Simpan data yang baru
+            userData.name = document.getElementById("full-name").value;
+            userData.nik = document.getElementById("nik").value;
+            userData.address = document.getElementById("address").value;
+            userData.phone = document.getElementById("phone").value;
+            userData.dob = document.getElementById("dob").value;
+            userData.username = document.getElementById("username").value;
+            userData.password = document.getElementById("password").value;
+
+            // Simpan ke localStorage
+            localStorage.setItem("user", JSON.stringify(userData));
+
+            alert("Profile updated successfully!");
+
+            // Kembali ke mode non-edit
+            let inputs = document.querySelectorAll("#user-profile-form input");
+            inputs.forEach((input) =>
+              input.setAttribute("disabled", "disabled")
+            );
+            document.getElementById("edit-button").style.display =
+              "inline-block";
+            document.getElementById("save-button").style.display = "none";
+          });
+      });
+    </script>
+  </body>
+</html>
