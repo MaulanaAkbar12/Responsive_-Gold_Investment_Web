@@ -19,8 +19,73 @@
   transition: all 0.3s ease;
 }
 
+/* navigation */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 0.5rem 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: var(--box-shadow);
+}
+
+header .Logo {
+  color: var(--dark-gray);
+  font-size: 1.8rem;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+header .Logo i {
+  color: var(--orange);
+}
+
+header .navbar a {
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+  color: var(--light-color);
+}
+
+header .navbar a:hover {
+  color: #fff;
+  background: var(--orange);
+}
+
+header .icons i,
+header .icons a {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  height: 3rem;
+  line-height: 3rem;
+  width: 3rem;
+  text-align: center;
+  font-size: 1.8rem;
+  color: var(--black);
+  border-radius: 50%;
+  background: #eee;
+}
+
+header .icons i:hover,
+header .icons a:hover {
+  color: #eee;
+  color: var(--orange);
+  transform: rotate(360deg);
+}
+
+header .icons #menu-bars {
+  display: none;
+}
+
 body {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -29,39 +94,42 @@ body {
 
 .container {
   display: flex;
-  flex-direction: column; /* Stacking the form and image vertically */
-  max-width: 800px;
+  justify-content: center;
+  max-width: 1500px;
   width: 100%;
-  height: auto;
+  height: 800px;
   background-color: var(--white);
   border-radius: 8px;
   box-shadow: var(--box-shadow);
   overflow: hidden;
-  margin: 20px auto; /* Centering the container */
 }
 
 .form-container {
-  padding: 40px;
+  flex: 0.6;
+  width: 100%;
+  padding-left: 100px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-y: auto;
   background-color: var(--white); /* White background for the form */
 }
 
 .image-container {
+  flex: 0.3;
+  max-width: 600px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px; /* Adjust height based on the image size */
-  background-color: var(
-    --light-gray
-  ); /* Background color for image container */
+  background-color: var(--light-gray); /* Background color for image container */
 }
 
 .image-container img {
   max-width: 100%;
-  height: 10%;
-  border-radius: 0; /* Clean look with no border radius */
+  height: auto;
+  object-fit: contain;
 }
 
 .logo img {
@@ -171,16 +239,44 @@ h3 {
 
 /* Responsive Design for smaller screens */
 @media (max-width: 768px) {
+  header .icons #menu-bars {
+    display: inline-block;
+  }
+
+  header .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  header .navbar a {
+    display: block;
+    padding: 1.5rem;
+    margin: 1rem;
+    font-size: 2rem;
+    background: #eee;
+  }
+  
   .container {
     flex-direction: column;
   }
 
   .form-container {
-    padding: 20px;
+    flex: 1; /* Mengisi seluruh ruang yang tersedia */
+    padding: 40px; /* Tambahkan padding agar tidak terlalu rapat */
   }
 
   .image-container {
-    height: 200px; /* Smaller height for mobile screens */
+    display: none;
   }
 }
 

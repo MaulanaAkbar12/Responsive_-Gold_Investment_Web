@@ -1,53 +1,54 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.querySelector("form");
+document.getElementById("signupForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // Mencegah reload halaman
 
-  form.addEventListener("submit", function (e) {
-    // Get all the input fields
-    const name = document.getElementById("name").value.trim();
-    const nik = document.getElementById("nik").value.trim();
-    const address = document.getElementById("address").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const dob = document.getElementById("dob").value.trim();
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+  // Ambil data dari form
+  let name = document.getElementById("name").value.trim();
+  let nik = document.getElementById("nik").value.trim();
+  let address = document.getElementById("address").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+  let dob = document.getElementById("dob").value;
+  let username = document.getElementById("username").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let password = document.getElementById("password").value.trim();
 
-    let errorMessage = "";
+  // Validasi jika ada field yang kosong
+  if (!name || !nik || !address || !phone || !dob || !username || !email || !password) {
+      Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Harap isi semua kolom!",
+      });
+      return;
+  }
 
-    // Validate each input
-    if (name === "") {
-      errorMessage += "Name is required.\n";
-    }
+  // Validasi email menggunakan regex
+  let emailPattern = /^[\w.%+-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailPattern.test(email)) {
+      Swal.fire({
+          icon: "error",
+          title: "Email tidak valid",
+          text: "Harap masukkan email yang benar!",
+      });
+      return;
+  }
 
-    if (nik === "" || isNaN(nik)) {
-      errorMessage += "NIK is required and should be a number.\n";
-    }
+  // Simpan data ke localStorage (simulasi backend)
+  localStorage.setItem(
+      "user",
+      JSON.stringify({ name, nik, address, phone, dob, username, email, password })
+  );
 
-    if (address === "") {
-      errorMessage += "Address is required.\n";
-    }
-
-    const phonePattern = /^[0-9]+$/;
-    if (phone === "" || !phonePattern.test(phone)) {
-      errorMessage +=
-        "Phone number is required and should only contain numbers.\n";
-    }
-
-    if (dob === "") {
-      errorMessage += "Date of birth is required.\n";
-    }
-
-    if (username === "") {
-      errorMessage += "Username is required.\n";
-    }
-
-    if (password === "" || password.length < 6) {
-      errorMessage +=
-        "Password is required and should be at least 6 characters long.\n";
-    }
-
-    if (errorMessage !== "") {
-      e.preventDefault();
-      alert(errorMessage);
-    }
+  // Notifikasi sukses dengan SweetAlert
+  Swal.fire({
+      icon: "success",
+      title: "Pendaftaran Berhasil!",
+      text: "Akun Anda telah berhasil dibuat.",
+      showConfirmButton: false,
+      timer: 2000
   });
+
+  // Redirect ke halaman login setelah sukses
+  setTimeout(() => {
+      window.location.href = "signin.html";
+  }, 2000);
 });

@@ -25,42 +25,42 @@ body {
 
 .gold-purchase-page {
   max-width: 1000px;
-  margin: 2rem auto;
-  padding: 3rem;
+  margin: 32px auto;
+  padding: 48px;
   background-color: var(--white);
-  border-radius: 1rem;
+  border-radius: 16px;
   box-shadow: var(--shadow);
 }
 
 .purchase-title {
-  font-size: 2.6rem;
+  font-size: 41.6px;
   text-align: center;
   color: var(--black);
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
 }
 
 .step-indicator {
-  font-size: 1.6rem;
+  font-size: 25.6px;
   text-align: center;
   color: var(--dark-gray);
-  margin-bottom: 2.5rem;
+  margin-bottom: 40px;
 }
 
 .purchase-details {
-  padding: 2rem;
+  padding: 32px;
 }
 
 .section-title {
-  font-size: 2.2rem;
+  font-size: 35.2px;
   color: var(--black);
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
 }
 
 .purchase-option {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
+  margin-bottom: 32px;
+  font-size: 28.8px;
 }
 
 .purchase-option label {
@@ -70,30 +70,30 @@ body {
 }
 
 .purchase-option input {
-  margin-right: 0.8rem;
+  margin-right: 12.8px;
 }
 
 .receiver-account {
-  margin-bottom: 2.5rem;
+  margin-bottom: 40px;
 }
 
 .receiver-account label {
-  font-size: 1.6rem;
+  font-size: 25.6px;
   color: var(--dark-gray);
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
   display: block;
 }
 
 .input-field,
 select {
   width: 100%;
-  padding: 1.2rem;
-  font-size: 1.8rem;
+  padding: 19.2px;
+  font-size: 28.8px;
   border: 2px solid var(--light-gray);
-  border-radius: 0.8rem;
+  border-radius: 12.8px;
   background-color: var(--white);
   color: var(--dark-gray);
-  margin-top: 0.7rem;
+  margin-top: 11.2px;
   transition: border-color 0.3s ease;
 }
 
@@ -106,27 +106,27 @@ select:focus {
 .gold-price {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2.5rem;
+  margin-bottom: 40px;
 }
 
 .gold-price p {
-  font-size: 1.8rem;
+  font-size: 28.8px;
   color: var(--dark-gray);
 }
 
 .price {
-  font-size: 2rem;
+  font-size: 32px;
   color: var(--orange);
 }
 
 .purchase-amount {
-  margin-bottom: 2.5rem;
+  margin-bottom: 40px;
 }
 
 .purchase-amount label {
-  font-size: 1.6rem;
+  font-size: 25.6px;
   color: var(--dark-gray);
-  margin-bottom: 0.8rem;
+  margin-bottom: 12.8px;
   display: block;
 }
 
@@ -137,13 +137,13 @@ select:focus {
 
 .amount-options .input-field {
   width: 48%;
-  padding: 1.2rem;
+  padding: 19.2px;
 }
 
 .terms {
-  font-size: 1.6rem;
+  font-size: 25.6px;
   color: var(--dark-gray);
-  margin-bottom: 2.5rem;
+  margin-bottom: 40px;
 }
 
 .terms a {
@@ -152,55 +152,57 @@ select:focus {
 
 .btn.next-btn {
   width: 100%;
-  padding-top: 1.5rem;
-  margin-top: 1rem;
+  padding-top: 24px;
+  margin-top: 16px;
   display: inline-block;
-  font-size: 1.7rem;
+  font-size: 27.2px;
   color: var(--white);
   background: var(--orange);
-  border-radius: 0.5rem;
+  border-radius: 8px;
   text-align: center;
   cursor: pointer;
-  padding: 0.8rem 3rem;
+  padding: 12.8px 48px;
 }
 
 .btn.next-btn:hover {
   background: var(--dark-gray);
-  letter-spacing: 0.1rem;
+  letter-spacing: 1.6px;
 }
+
+/* responsif */
 
 @media screen and (max-width: 768px) {
   .gold-purchase-page {
-    padding: 2rem;
+    padding: 32px;
   }
 
   .purchase-title {
-    font-size: 2.2rem;
+    font-size: 35.2px;
   }
 
   .step-indicator {
-    font-size: 1.4rem;
+    font-size: 22.4px;
   }
 
   .purchase-option {
     flex-direction: column;
-    font-size: 1.6rem;
+    font-size: 25.6px;
   }
 
   .purchase-option label {
-    margin-bottom: 1rem;
+    margin-bottom: 16px;
   }
 
   .purchase-amount {
-    margin-bottom: 2rem;
+    margin-bottom: 32px;
   }
 
   .gold-price p {
-    font-size: 1.6rem;
+    font-size: 25.6px;
   }
 
   .price {
-    font-size: 1.8rem;
+    font-size: 28.8px;
   }
 
   .amount-options {
@@ -209,42 +211,48 @@ select:focus {
 
   .amount-options .input-field {
     width: 100%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .gold-purchase-page {
-    padding: 1.5rem;
+    padding: 24px;
   }
 
   .purchase-title {
-    font-size: 2rem;
+    font-size: 32px;
   }
 
   .step-indicator {
-    font-size: 1.2rem;
+    font-size: 19.2px;
   }
 
   .purchase-option {
-    font-size: 1.4rem;
+    font-size: 22.4px;
   }
 
   .input-field {
-    font-size: 1.4rem;
-    padding: 1rem;
+    font-size: 22.4px;
+    padding: 16px;
   }
 
   .gold-price p {
-    font-size: 1.4rem;
+    font-size: 22.4px;
   }
 
   .price {
-    font-size: 1.6rem;
+    font-size: 25.6px;
   }
 
   .btn.next-btn {
-    padding: 1.2rem;
-    font-size: 1.6rem;
+    padding: 19.2px;
+    font-size: 25.6px;
+  }
+
+  .terms {
+    font-size: 16px;
+    color: var(--dark-gray);
+    margin-bottom: 40px;
   }
 }

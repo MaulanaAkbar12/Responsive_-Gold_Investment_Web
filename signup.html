@@ -3,18 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
+    <title>Daftar</title>
     <link rel="stylesheet" href="css/signup.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css"rel="stylesheet"/>
+  <!-- box icon -->
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"/>
+    
   </head>
   <body>
+    <header>
+        <a href="#" class="Logo">
+          <i class="bx bx-money-withdraw"></i>Gold Investment.
+        </a>
+        </nav>
+        <div class="icons">
+          <a href="signin.html" class="bx bx-user"></a>
+        </div>
+    </header>
     <div class="container">
       <div class="image-container">
-        <img src="images/gold.jpeg" alt="Sign up image" />
+        <img src="images/inbest.jpg" alt="Sign up image" />
       </div>
       <div class="form-container">
         <h3>Sign Up</h3>
@@ -35,8 +46,7 @@
             <input
               type="text"
               id="address"
-              placeholder="Your Address"
-              required
+              placeholder="Your Address"required
             />
           </div>
 
@@ -90,56 +100,8 @@
         </p>
       </div>
     </div>
-
-    <script>
-      document
-        .getElementById("signupForm")
-        .addEventListener("submit", function (event) {
-          event.preventDefault(); // Mencegah form dari reload
-
-          // Ambil data dari form
-          let name = document.getElementById("name").value;
-          let nik = document.getElementById("nik").value;
-          let address = document.getElementById("address").value;
-          let phone = document.getElementById("phone").value;
-          let dob = document.getElementById("dob").value;
-          let username = document.getElementById("username").value;
-          let email = document.getElementById("email").value;
-          let password = document.getElementById("password").value;
-
-          // Validasi email regex
-          let emailPattern = /^[\w.%+-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
-          if (!emailPattern.test(email)) {
-            document.getElementById("email-error").textContent =
-              "Invalid email format!";
-            return;
-          } else {
-            document.getElementById("email-error").textContent = "";
-          }
-
-          // Simulasi pendaftaran sukses
-          toastr.success("Account created successfully!");
-
-          // Simpan data ke localStorage (simulasi backend)
-          localStorage.setItem(
-            "user",
-            JSON.stringify({
-              name,
-              nik,
-              address,
-              phone,
-              dob,
-              username,
-              email,
-              password,
-            })
-          );
-
-          // Redirect ke halaman login setelah beberapa detik
-          setTimeout(() => {
-            window.location.href = "signin.html";
-          }, 2000);
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="js/signup.js"></script>
   </body>
 </html>

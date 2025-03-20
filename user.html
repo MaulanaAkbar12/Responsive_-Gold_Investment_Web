@@ -5,61 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Page - Gold Investment</title>
     <link rel="stylesheet" href="css/user.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css"
+    />
   </head>
   <body>
-    <!-- Header Section -->
     <header class="user-header">
       <div class="user-info">
-        <img src="images/Woman.jpeg" alt="User Profile" class="user-img" />
+        <img src="images/WomanCam.jpeg" alt="User Profile" class="user-img" />
         <div class="user-details">
-          <h2 id="user-name">User Name</h2>
-          <p>ID: <span id="user-id">12345</span></p>
+          <div class="name-and-edit">
+            <h2 id="user-name">User Name</h2>
+            <a href="profile.html" class="edit-btn"></a>
+              <i class='bx bx-edit'></i>
+            </button>
+          </div>
+          <p class="user-id">ID: <span id="user-id">12345</span></p>
         </div>
       </div>
+      <a href="index.html" class="logout-btn">
+        <i class='bx bx-log-out'></i>
+      </a>
     </header>
 
-    <!-- Balance Overview -->
     <section class="balance-overview">
       <div class="balance-box">
-        <h3>Your Gold Balance</h3>
-        <p class="balance" id="gold-grams">0 grams</p>
-        <p class="balance-value">Rp <span id="gold-value">0</span></p>
+        <h3>Saldo Emas Kamu</h3>
+        <p class="balance" id="gold-grams">5 grams</p>
+        <p class="balance-value">Rp <span id="gold-value">7.305.000</span></p>
       </div>
       <div class="action-buttons">
-        <a href="Jual.html" class="btn">Sell Gold</a>
-        <a href="Beli.html" class="btn">Buy Gold</a>
+        <a href="Jual.html" class="btn">
+          <div class="btn-icon sell-icon">
+            <i class='bx bx-cart-alt'></i>
+          </div>
+          <span>Jual Emas</span>
+        </a>
+        <a href="Beli.html" class="btn">
+          <div class="btn-icon buy-icon">
+            <i class='bx bx-plus'></i>
+          </div>
+          <span>Beli Emas</span>
+        </a>
       </div>
     </section>
 
-    <!-- Footer Navigation -->
-    <footer class="footer-nav">
+    <section class="transaction-history">
+      <h3>Histori Transaksi</h3>
+      <ul class="history-list">
+        <li class="history-item">Beli 2 gram - Rp 2.920.000</li>
+        <li class="history-item">Jual 1 gram - Rp 1.460.000</li>
+        <li class="history-item">Beli 3 gram - Rp 4.380.000</li>
+      </ul>
+    </section>
+
+    <!-- <footer class="footer-nav">
       <div class="footer-btn">
         <a href="user.html" class="footer-link">Home</a>
       </div>
       <div class="footer-btn">
-        <a href="index.html" class="footer-link">Log Out</a>
+        <a href="transaction.html" class="footer-link">Transaction</a>
       </div>
       <div class="footer-btn">
         <a href="Profile.html" class="footer-link">Profile</a>
       </div>
-    </footer>
-
-    <script>
-      // Simulasi data user (bisa diganti dengan data dari backend via API)
-      const user = {
-        name: "John Doe",
-        id: "12345",
-        currentGold: 5, // dalam gram
-        goldPrice: 1461000, // harga per gram
-      };
-
-      document.getElementById("user-name").textContent = user.name;
-      document.getElementById("user-id").textContent = user.id;
-      document.getElementById("gold-grams").textContent =
-        user.currentGold + " grams";
-      document.getElementById("gold-value").textContent = (
-        user.currentGold * user.goldPrice
-      ).toLocaleString("id-ID");
-    </script>
+    </footer> -->
   </body>
 </html>
