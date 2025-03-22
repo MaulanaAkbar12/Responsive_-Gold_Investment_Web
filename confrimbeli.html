@@ -76,18 +76,18 @@
 
       function confirmBeli() {
         Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
+          title: "Apakah kamu yakin ingin membeli emas?",
+          text: "Jika transaksi terjadi kamu tidak bisa membatalkan",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
+          confirmButtonText: "Yes!",
         }).then((result) => {
           if (result.isConfirmed) {
             Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
+              title: "Pembelian berhasil!",
+              text: "Pembelian kamu berhasil dilakukkan.",
               icon: "success",
             }).then(() => {
               window.location.href = "user.html";

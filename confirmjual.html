@@ -93,20 +93,20 @@
           "Rp " + jualData.rupiahAmount;
       }
 
-      function ConfirmJual() {
+      function confirmJual() {
         Swal.fire({
-          title: "Apakah kamu sudah yakin ingin membeli emas?",
-          text: "Setelah klik Yes kamu tidak dapat membatalkan transaksimu",
+          title: "Apakah kamu yakin ingin menjual emas?",
+          text: "Jika transaksi terjadi kamu tidak bisa membatalkan",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Yes",
+          confirmButtonText: "Yes!",
         }).then((result) => {
           if (result.isConfirmed) {
             Swal.fire({
-              title: "Berhasil!",
-              text: "Pembelianmu sudah Berhasil!",
+              title: "Penjualan berhasil!",
+              text: "Penjualan emas kamu berhasil dilakukkan.",
               icon: "success",
             }).then(() => {
               window.location.href = "user.html";
