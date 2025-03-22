@@ -24,7 +24,12 @@ html {
   font-size: 62.5%;
   scroll-padding-top: 5.5rem;
   scroll-behavior: smooth;
+  overflow: hidden;
 }
+
+ body {
+  overflow-x: hidden;
+ }
 
 /* all section */
 section {
@@ -177,13 +182,6 @@ header .icons #menu-bars {
   line-height: 1.5;
 }
 
-/* dishes */
-.dishes .box-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
-  gap: 3rem;
-  padding-top: 2rem;
-}
 
 /* dishes */
 .keunggulan .box-container {
@@ -200,7 +198,6 @@ header .icons #menu-bars {
   border: 0.1rem solid rgba(0, 0, 0, 0.2);
   box-shadow: var(--box-shadow);
   position: relative;
-  overflow: hidden;
   display: flex;
   align-items: center;
 }
@@ -416,7 +413,7 @@ header .icons #menu-bars {
 
 @media (max-width: 768px) {
   .swiper-slide {
-    width: 90%;
+    width: 100%;
   }
 }
 
@@ -592,6 +589,15 @@ header .icons #menu-bars {
   header {
     padding: 2rem;
   }
+  
+  header .navbar {
+     clip-path: none;
+     display: none;
+  }
+
+  header .navbar.active{
+    display: block;
+  }
 
   section {
     padding: 1rem 2rem;
@@ -626,13 +632,7 @@ header .icons #menu-bars {
     background: #eee;
   }
 
-  .home .home-slider .slide .content h3 {
-    font-size: 5rem;
-  }
-
-  .menu .box-container .box .image img {
-    margin-left: 2.9rem;
-    height: 100%;
+  .home .image img {
     width: 80%;
   }
 
@@ -648,11 +648,25 @@ header .icons #menu-bars {
     margin-top: 4rem;
     padding-top: 1rem;
   }
+
+  .keunggulan .box-container .box {
+    flex-direction: row;
+    }
 }
 
 @media (max-width: 450px) {
   html {
     font-size: 50%;
+  }
+
+  .home img {
+    display: none;
+  }
+
+  .keunggulan .box-container .box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .dishes .box-container .box img {
