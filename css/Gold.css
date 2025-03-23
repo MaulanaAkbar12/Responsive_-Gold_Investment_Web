@@ -24,7 +24,7 @@ html {
   font-size: 62.5%;
   scroll-padding-top: 5.5rem;
   scroll-behavior: smooth;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
  body {
@@ -411,6 +411,9 @@ header .icons #menu-bars {
   padding: 2rem;
 }
 
+
+/* responsive */
+
 @media (max-width: 768px) {
   .swiper-slide {
     width: 100%;
@@ -648,6 +651,7 @@ header .icons #menu-bars {
     margin-top: 4rem;
     padding-top: 1rem;
   }
+  
 
   .keunggulan .box-container .box {
     flex-direction: row;
@@ -661,6 +665,10 @@ header .icons #menu-bars {
 
   .home img {
     display: none;
+  }
+
+  .keunggulan .box-container {
+    grid-template-columns: 1fr;
   }
 
   .keunggulan .box-container .box {

@@ -100,7 +100,7 @@ body {
   }
 
   .purchase-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .step-indicator {
@@ -140,6 +140,6 @@ body {
 
   .btn.next-btn {
     padding: 1.2rem;
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
 }

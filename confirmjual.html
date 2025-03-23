@@ -18,7 +18,7 @@
 
         <div class="selling-option">
           <label>Nama Pemilik:</label>
-          <p id="ownerName">-</p>
+          <p id="ownerName">John Doe</p>
         </div>
         <div class="selling-option">
           <label>Rekening Emas:</label>
@@ -36,7 +36,7 @@
             <img src="images/download.jpeg" alt="Logo Bank" />
           </div>
           <div class="receiver-details">
-            <label id="receiverBank">-</label>
+            <label id="receiverBank">Bank BRI</label>
             <p id="receiverName">-</p>
             <p id="receiverAccount">-</p>
           </div>
@@ -79,11 +79,9 @@
         }
 
         // Menampilkan data pada halaman konfirmasi
-        document.getElementById("ownerName").textContent = "User Example"; // Bisa diganti dari database
         document.getElementById("rekeningEmas").textContent = jualData.sender;
         document.getElementById("nominalEmas").textContent =
           (jualData.rupiahAmount / 1461000).toFixed(2) + " gram";
-        document.getElementById("receiverBank").textContent = "Bank XYZ"; // Bisa disesuaikan
         document.getElementById("receiverName").textContent = "Nama Penerima"; // Bisa disesuaikan
         document.getElementById("receiverAccount").textContent =
           jualData.receiver;

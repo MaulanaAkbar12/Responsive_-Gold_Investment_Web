@@ -17,7 +17,7 @@
 
         <div class="purchase-option">
           <label>Nama Pemilik:</label>
-          <p id="ownerName">-</p>
+          <p id="ownerName">John Doe</p>
         </div>
         <div class="purchase-option">
           <label>Rekening Emas:</label>
@@ -52,7 +52,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       function loadBeliData() {
-        // Ambil data dari localStorage yang disimpan sebelumnya
         const beliData = JSON.parse(localStorage.getItem("beliData"));
 
         if (!beliData) {
@@ -63,8 +62,6 @@
           return;
         }
 
-        // Menampilkan data pada halaman konfirmasi
-        document.getElementById("ownerName").textContent = "User Example"; // Bisa diganti dari database
         document.getElementById("rekeningEmas").textContent = beliData.sender;
         document.getElementById("nominalEmas").textContent =
           (beliData.rupiahAmount / 1461000).toFixed(2) + " gram";
@@ -95,25 +92,6 @@
           }
         });
       }
-      // Swal.fire({
-      //   title: "Apakah anda sudah yakin ingin membeli emas??",
-      //   showDenyButton: true,
-      //   showCancelButton: true,
-      //   confirmButtonText: "Yes",
-      // }).then((result) => {
-      //   /* Read more about isConfirmed, isDenied below */
-      //   if (result.isConfirmed) {
-      //     Swal.fire("Saved!", "", "success");
-      //   } else if (result.isDenied) {
-      //     Swal.fire("Changes are not saved", "", "info");
-      //   }
-      // });
-
-      // function confirmBeli() {
-      //   alert("Pembelian berhasil dikonfirmasi!");
-      //   localStorage.removeItem("beliData"); // Hapus data setelah transaksi selesai
-      //   window.location.href = "Success.html"; // Bisa diarahkan ke halaman sukses
-      // }
     </script>
   </body>
 </html>

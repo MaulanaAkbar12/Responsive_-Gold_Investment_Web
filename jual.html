@@ -100,16 +100,12 @@
         const rupiahInput = document.getElementById("rupiahAmount");
         const gramInput = document.getElementById("gramAmount");
 
-        // Set the conversion rate from Rupiah to Gram
         const conversionRate = 1461000;
 
-        // Parse the input value from Gram
         const gramValue = parseFloat(gramInput.value.replace(/,/g, "")) || 0;
 
-        // Calculate the equivalent rupiah
         const rupiahValue = gramValue * conversionRate;
 
-        // Update the rupiahAmount field with the calculated value (formatted to 2 decimals)
         rupiahInput.value = rupiahValue.toFixed(2);
       }
 
