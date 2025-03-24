@@ -138,12 +138,21 @@ body {
   }
 
   .selling-option {
-    flex-direction: column;
-    font-size: 1.6rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
   }
 
   .selling-option label {
-    margin-bottom: 1rem;
+    flex: 1;
+    white-space: nowrap;
+  }
+
+  .selling-option p {
+    flex: 2;
+    text-align: right;
   }
 }
 
